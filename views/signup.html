@@ -72,9 +72,7 @@
 
 
             <div class="container-login100-form-btn">
-              <button class="login100-form-btn" id="signupBtn">
-                Signup
-              </button>
+                <input type="button" id="signupBtn" value="Signup" class="login100-form-btn">
             </div>
 
 
@@ -102,15 +100,17 @@
       }
     });
     $(document).ready(function () {      
-      console.log("hello");
       
-      new signupModel();
-      // $("#signupBtn").click(function(){
-      //   console.log("helo");
-      //   //console.log(typeof $("input[name=name]").val());
-
-      //   // if($("input[name=name]").val().length !=0 &&)
-      // })
+      $("#signupBtn").click(function(){
+        if($("input[name=name]").val().length !=0 && $("input[name=email]").val().length !=0 && $("input[name=pass]").val().length !=0 && $("input[name=cpass]").val().length !=0 &&$("input[name=mobile]").val().length !=0 )
+        {
+          var model = new signupModel({name:$("input[name=name]").val(),email:$("input[name=email]").val(),password:$("input[name=pass]").val(),cpassword:$("input[name=cpass]").val(),mobile:$("input[name=mobile]").val()})
+          console.log(model.toJSON());
+          
+        }else{
+          alert("Please fill all the details");
+        }
+      })
     })
   </script>
 </body>
