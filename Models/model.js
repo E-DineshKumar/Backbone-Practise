@@ -61,6 +61,7 @@ methods.signup = function (u_name, u_email, u_password, u_mobile) {
   });
 }
 methods.login = function (email_id) {
+
   return connection.sync().then(function () {
     if (email_id === "admin@admin.com") {
       return admin.findOne({ where: { email: email_id } });
@@ -68,6 +69,7 @@ methods.login = function (email_id) {
       return student.findOne({ where: { email: email_id } });
     }
   }).then(result => {
+    
     if (result != undefined && result.dataValues != undefined) {
       return Promise.resolve(result.dataValues)
     } else {
